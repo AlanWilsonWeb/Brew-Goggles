@@ -16,7 +16,6 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(cookieParser())
 app.use(morgan('dev'))
 
 mongoose.connect('mongodb://brewgogglesadmin:alcoholica1@ds117423.mlab.com:17423/brewgoggles', function(err) {
