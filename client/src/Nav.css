@@ -1,0 +1,19 @@
+.headNav {
+    background-color: #0a5c8f;
+    position: relative;
+    top: top;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.headNav h1 {
+    font-size: 4em;
+    padding: 0;
+    margin: 0;
+    font-family: 'Luckiest Guy', cursive;
+    color: #f2c025;
+    text-shadow:
+		-2px -2px 0 #000,
+		2px -2px 0 #000,
+		-2px 2px 0 #000,
+		2px 2px 0 #000;
+}
