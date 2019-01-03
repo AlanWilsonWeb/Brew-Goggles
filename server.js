@@ -7,6 +7,10 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const db = mongoose.connection;
 const app = express();
+const axios = require('axios');
+const values = require('./blah/api');
+const puller = require('./puller/puller');
+
 // Development mode port
 const port = process.env.PORT || 5000;
 app.listen(port)
@@ -39,6 +43,16 @@ app.get('/test', (req, res) => {
     {id:2, name: "is"},
     {id:3, name: "a"},
     {id:4, name: "test"}
+  ]);
+});
+
+app.get('/time', (req, res) => {
+  res.json(puller.timeSync());
+});
+
+app.get('/test2', (req, res) => {
+  res.json([
+    {ID: values.ID, Secret: values.secret}
   ]);
 });
 
