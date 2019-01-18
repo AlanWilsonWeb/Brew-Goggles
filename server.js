@@ -9,7 +9,8 @@ const db = mongoose.connection;
 const app = express();
 const axios = require('axios');
 const Login = require('./models/Login');
-const puller = require('./puller/puller');
+const Time = require('./models/Time');
+var moment = require('moment');
 
 // Development mode port
 const port = process.env.PORT || 5000;
@@ -37,6 +38,10 @@ db.once('open', () => {
 mongoose.set('bufferCommands', false);
 mongoose.set('debug', true);
 
+// if (moment().add(1, 'hours').isBefore(moment())) 
+// 	{
+//   };
+  
 app.get('/test', (req, res) => {
   res.json([
     {id:1, name: "this"},
@@ -52,8 +57,21 @@ app.get('/login', (req, res) => {
   });
 })
 
+app.post('/timesync', (req, res) => {
+  Time.create({
+    ID: 1
+  });
+  res.end();
+})
+
+app.get('/mongotime', (req, res) => {
+  Time.find({ ID: 1}, 'DATA -_id', {},function(err, item){
+    res.json(item);
+  });
+})
+
 app.get('/time', (req, res) => {
-  res.json(puller.timeSync());
+  res.json(new(Date));
 });
 
 app.get('*', (req, res) => {
